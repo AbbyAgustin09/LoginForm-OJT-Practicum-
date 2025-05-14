@@ -1,0 +1,811 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background-color: #B6CBF3;
+}
+
+body.dark-mode {
+    background-color: #433554;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.sidebar {
+    position: relative;
+    width: 256px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 24px;
+    transition: all 0.3s;
+}
+
+.sidebar.active {
+    /* minimized sidebar size */
+    width: 100px;
+}
+
+.sidebar.active .menu-btn {
+    position: absolute;
+    right: -14px;
+    top: 1%;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #433554;
+    border: 2px solid lightgray;
+    background-color: #fff;
+
+}
+
+.sidebar.active .menu-btn i {
+    /* sidebar arrow rotation */
+    transform: rotate(180deg);
+}
+
+.sidebar.active .menu ul li .arrow {
+    /* dropdown arrow hidden when minimized */
+    display: none;
+}
+
+.sidebar.active .menu>ul>li>a {
+    /* item alignments when minimized sidebar */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar.active .menu>ul>li>a .text {
+    position: absolute;
+    transform: translateY(-50%);
+    visibility: hidden;
+}
+
+/* Sidebar content */
+
+.sidebar.active .menu>ul>li>a .text {
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    border-radius: 8px;
+    color: #433554;
+    background-color: #aeddf3;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.sidebar.active .menu>ul>li>a:hover .text {
+    left: 50px;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Lilo logo */
+.sidebar .head {
+    display: flex;
+}
+
+.user-img img {
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Lilo logo */
+
+
+/* Sidebar content */
+.nav {
+    /* sidebar space */
+    flex: 1;
+}
+
+.nav img {
+    /* sidebar logos */
+    height: 20px;
+}
+
+.menu {
+    font-size: 10px;
+    font-weight: 500;
+    color: #757575;
+}
+
+.menu ul li {
+    position: relative;
+    list-style: none;
+}
+
+.menu ul li a {
+    /* sidebar fonts */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #433554;
+    text-decoration: none;
+    padding: 12px 8px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.menu ul li>a:hover {
+    /* sidebar hover */
+    color: #000;
+    background-color: #e6e6e6;
+}
+
+.menu ul li .text {
+    /* dropdown arrow space */
+    flex: 1;
+}
+
+.menu ul li .arrow {
+    /* dropdown arrow */
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.menu ul li.active .arrow {
+    /* dropdown arrow rotation */
+    transform: rotate(180deg);
+}
+
+.menu .sub-menu {
+    /* dropdown contents */
+    display: none;
+    margin-left: 20px;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+.menu .sub-menu li a {
+    /* dropdown texts */
+    padding: 8px 8px;
+    font-size: 12px;
+}
+
+.menu-btn {
+    /* sidebar arrow button */
+    position: absolute;
+    right: -14px;
+    top: 1%;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #433554;
+    border: 2px solid lightgray;
+    background-color: #fff;
+}
+
+.menu-btn:hover i {
+    /* sidebar arrow hover */
+    color: #433554;
+}
+
+.menu-btn i {
+    /* sidebar arrow transition */
+    transition: all .3s;
+}
+
+
+/* Dark Mode Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #B6CBF3;
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #433554;
+}
+
+input:checked+.slider:before {
+    transform: translateX(14px);
+}
+
+/* Rounded Slider */
+.slider.round {
+    border-radius: 20px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Dark Mode Switch */
+
+
+/* DTRS Logs */
+.wrapper {
+    box-sizing: border-box;
+    background-color: white;
+    height: 80vh;
+    width: max(93%, 600px);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.table-box {
+    /* table */
+    border: 1px solid whitesmoke;
+    background-color: whitesmoke;
+    box-sizing: border-box;
+    height: 100vh;
+    width: max(100%, 600px);
+    margin-top: 0px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.search-bar {
+    margin-top: -50px;
+    padding: 15px;
+    padding-left: 80%;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+table {
+    font-size: 15px;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background-color: #dbe2f4;
+}
+
+td,
+th {
+    text-align: center;
+    padding: 10px;
+}
+
+tr :hover {
+    background-color: #D6EEEE;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: lightgrey;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Container for pagination */
+.pagination {
+    display: flex;
+    /* Align buttons in a row */
+    align-items: center;
+    /* Center buttons vertically */
+    flex-wrap: wrap;
+    height: auto;
+    /* Automatically adjust height based on content */
+    margin: 20px 0;
+    /* Add more space above and below the pagination */
+    margin-bottom: 0px;
+    font-family: Arial, sans-serif;
+    /* Set a clean font */
+}
+
+/* Style for each pagination button */
+.pagination button {
+    padding: 8px 16px;
+    /* Increased padding for a better button size */
+    margin: 4px;
+    /* Space between buttons */
+    cursor: pointer;
+    border: 1px solid #433554;
+    /* Dark border for buttons */
+    border-radius: 5px;
+    /* Rounded corners */
+    background-color: #f9f9f9;
+    /* Light background color */
+    color: #433554;
+    /* Dark text color for contrast */
+    font-size: 10px;
+    /* Set a readable font size */
+    font-weight: 700;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    /* Smooth color transition */
+}
+
+/* Hover effect for buttons */
+.pagination button:hover {
+    background-color: #433554;
+    /* Dark background on hover */
+    color: #f9f9f9;
+    /* Light text color on hover */
+}
+
+/* Active state for buttons (when clicked) */
+.pagination button.active {
+    background-color: #37b9dc;
+    /* Darker background for active state */
+    color: #f9f9f9;
+    /* Light text color */
+    border-color: #37b9dc;
+    /* Darker border color */
+}
+
+/* Style for disabled buttons */
+.pagination .disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    /* Semi-transparent for disabled state */
+    background-color: #e0e0e0;
+    /* Light gray background for disabled state */
+    color: #a0a0a0;
+    /* Light gray text for disabled state */
+    border: 1px solid #a0a0a0;
+    /* Matching border color for disabled state */
+}
+
+/* Responsive Styles */
+@media (max-width: 1400px) {
+    .sidebar {
+        width: 220px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    .menu {
+        font-size: 12px;
+    }
+
+    .menu ul li a {
+        font-size: 10px;
+        padding: 6px;
+    }
+
+    .menu .sub-menu li a {
+        padding: 5px 5px;
+        font-size: 10px;
+    }
+
+    .menu-btn {
+        right: -14px;
+        top: 1%;
+        width: 24px;
+        height: 24px;
+    }
+
+    .menu-btn i {
+        font-size: 14px;
+        transition: all .3s;
+    }
+
+    .sidebar.active .menu-btn i {
+        transform: rotate(180deg);
+    }
+
+    .sidebar.active .menu-btn {
+        display: flex;
+        position: absolute;
+        right: -14px;
+        top: 1%;
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .search-bar {
+        margin-top: -50px;
+        padding: 15px;
+        padding-left: 70%;
+    }
+
+    .wrapper {
+        width: max(90%, 600px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .table-box {
+        width: max(100%, 200px);
+        margin-top: 0px;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    .menu {
+        font-size: 12px;
+    }
+
+    .menu ul li a {
+        font-size: 10px;
+        padding: 6px;
+    }
+
+    .menu .sub-menu li a {
+        padding: 5px 5px;
+        font-size: 10px;
+    }
+
+    .menu-btn {
+        right: -14px;
+        top: 1%;
+        width: 24px;
+        height: 24px;
+    }
+
+    .menu-btn i {
+        font-size: 14px;
+        transition: all .3s;
+    }
+
+    .sidebar.active .menu-btn i {
+        transform: rotate(180deg);
+    }
+
+    .sidebar.active .menu-btn {
+        display: flex;
+        position: absolute;
+        right: -14px;
+        top: 1%;
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 180px;
+    }
+
+    .search-bar {
+        margin-top: -50px;
+        padding: 15px;
+        padding-left: 60%;
+    }
+
+    .wrapper {
+        width: 91%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .table-box {
+        width: max(100%, 200px);
+        margin-top: 0px;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    .menu {
+        font-size: 12px;
+    }
+
+    .menu ul li a {
+        font-size: 10px;
+        padding: 6px;
+    }
+
+    .menu .sub-menu li a {
+        padding: 5px 5px;
+        font-size: 10px;
+    }
+
+    .menu-btn {
+        right: -14px;
+        top: 1%;
+        width: 24px;
+        height: 24px;
+    }
+
+    .menu-btn i {
+        font-size: 14px;
+        transition: all .3s;
+    }
+
+    .sidebar.active .menu-btn i {
+        transform: rotate(180deg);
+    }
+
+    .sidebar.active .menu-btn {
+        display: flex;
+        position: absolute;
+        right: -14px;
+        top: 1%;
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        width: 160px;
+        padding: 16px;
+    }
+
+    .nav img {
+        height: 10px;
+    }
+
+    .wrapper {
+        width: max(85%, 400px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .table-box {
+        width: max(100%, 200px);
+        margin-top: 0px;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
+    table {
+        font-size: 10px;
+    }
+
+    .menu {
+        font-size: 12px;
+    }
+
+    .menu ul li a {
+        font-size: 10px;
+        padding: 6px;
+    }
+
+    .menu .sub-menu li a {
+        padding: 5px 5px;
+        font-size: 8px;
+    }
+
+    .menu-btn {
+        right: -14px;
+        top: 1%;
+        width: 24px;
+        height: 24px;
+    }
+
+    .menu-btn i {
+        font-size: 14px;
+        transition: all .3s;
+    }
+
+    .sidebar.active .menu-btn i {
+        transform: rotate(180deg);
+    }
+
+    .sidebar.active .menu-btn {
+        display: flex;
+        position: absolute;
+        right: -14px;
+        top: 1%;
+        width: 24px;
+        height: 24px;
+    }
+
+    .sidebar.active {
+        width: 50px;
+    }
+
+    .sidebar.active .switch {
+        display: none;
+    }
+
+    .sidebar.active .menu>ul>li>a:hover .text {
+        left: 30px;
+    }
+
+}
+
+@media (max-width: 426px) {
+    .sidebar {
+        width: 160px;
+        /* Default width */
+        padding: 16px;
+        /* Default padding */
+    }
+
+    .sidebar.active {
+        width: 0;
+        /* Ensure sidebar is hidden */
+        padding: 0;
+        /* Remove padding */
+        overflow: hidden;
+        /* Ensure content doesn't overflow */
+    }
+
+    .sidebar.active .nav img {
+        display: none;
+    }
+
+    table {
+        font-size: 10px;
+    }
+
+    .menu {
+        font-size: 12px;
+    }
+
+    .menu ul li a {
+        font-size: 10px;
+        padding: 6px;
+    }
+
+    .menu .sub-menu li a {
+        padding: 5px 5px;
+        font-size: 8px;
+    }
+
+    .menu-btn {
+        right: -14px;
+        top: 1%;
+        width: 24px;
+        height: 24px;
+    }
+
+    .menu-btn i {
+        font-size: 14px;
+        transition: all .3s;
+    }
+
+    .nav img {
+        height: 10px;
+    }
+
+    .search-bar {
+        margin-top: -50px;
+        padding: 15px;
+        padding-left: 30%;
+    }
+
+    .wrapper {
+        width: 91%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .table-box {
+        width: max(100%, 250px);
+        margin-top: 0px;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
+    .sidebar.active .menu-btn i {
+        transform: rotate(180deg);
+    }
+
+    .sidebar.active .menu-btn {
+        position: fixed;
+        /* Fixed position to stay visible */
+        left: 20px;
+        /* Position from the right */
+        top: 10px;
+        /* Position from the top */
+        z-index: 1000;
+        /* Ensure it's above other content */
+        display: flex;
+        /* Display as flex for alignment */
+    }
+
+    .sidebar.active .switch {
+        display: none;
+    }
+
+    .sidebar.active .menu>ul>li>a:hover .text {
+        left: 30px;
+    }
+
+    .sidebar.active .menu>ul>li {
+        pointer-events: none;
+        cursor: default;
+    }
+
+}
